@@ -8,9 +8,9 @@
     "mockserver": "node mock-server/websocket-server.js",
     "clean:files": "rimraf --glob ./raw-assets/*",
     "clean:preload": "rimraf --glob \"./assets/images/common/preload{m}\"",
-    "clean:assetCache": "cross-env-shell \"rimraf .assetpack\"",
+    "clean:assetCache": "rimraf --glob \".assetpack\"",
     "build:assets": "assetpack",
-    "dev:server": "vite",
+    "dev:server": "vite --port 3030",
     "compress": "pnpm run clean:assetCache && pnpm run clean:files && pnpm run clean:preload && node compress-images.js ./ zh",
     "dev": "pnpm run compress && pnpm run build:assets && pnpm run dev:server",
     "build": "pnpm run compress && pnpm run build:assets && vite build --mode development --base=./"

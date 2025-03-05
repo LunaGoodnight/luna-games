@@ -3,6 +3,48 @@
     {
       "name": "default",
       "assets": []
+    },
+    {
+      "name": "afterload",
+      "assets": [
+        {
+          "alias": [
+            "images/common/afterload/golden.jpg",
+            "golden.jpg"
+          ],
+          "src": [
+            "images/common/afterload/golden-zOkx6A.jpg"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "preload",
+      "assets": [
+        {
+          "alias": [
+            "images/common/preload/low-golden.jpg",
+            "low-golden.jpg"
+          ],
+          "src": [
+            "images/common/preload/low-golden-M1PVRg.jpg"
+          ],
+          "data": {
+            "tags": {
+              "m": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "locales",
+      "assets": []
     }
   ]
 }
