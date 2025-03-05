@@ -12,6 +12,5 @@ export const dessertMachine = setup({
 }).createMachine({
     context: {
         soundOn: true,
-
     }
 })

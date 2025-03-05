@@ -13,6 +13,7 @@
     "vite": "^6.2.0"
   },
   "dependencies": {
+    "@assetpack/core": "^1.4.0",
     "pixi.js": "^8.8.1",
     "prettier": "^3.5.3"
   }

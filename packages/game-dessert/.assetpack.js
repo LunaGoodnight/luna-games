@@ -1,13 +1,10 @@
 import { pixiPipes } from '@assetpack/core/pixi';
-import { audio } from '@assetpack/core/ffmpeg';
-import { spineAtlasManifestMod } from '@assetpack/core/spine';
 
-// https://pixijs.io/assetpack/docs/guide/pipes/ffmpeg/
+
 export default {
 	entry: './raw-assets',
 	output: './public/assets',
 	pipes: [
-		// spineAtlasManifestMod(),
 		...pixiPipes({
 			cacheBust: true,
 			audio: {
