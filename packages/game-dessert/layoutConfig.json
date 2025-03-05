@@ -1,0 +1,125 @@
+{
+  "gameTitle": "點心公主",
+  "common": {
+    "preload": [
+      "preload"
+    ],
+    "content": {
+      "loadingTexture": {
+        "Portrait": "loading-Portrait.jpg",
+        "Landscape": "loading-Landscape.jpg"
+      },
+      "Landscape": {
+        "gameWidth": 1920,
+        "gameHeight": 1080,
+        "aspectRatioHeight": 9,
+        "aspectRatioWidth": 16
+      },
+      "Portrait": {
+        "gameWidth": 1200,
+        "gameHeight": 1920,
+        "aspectRatioHeight": 16,
+        "aspectRatioWidth": 9
+      },
+      "aspectRatioThreshold": 1.2,
+      "backgroundScale": {
+        "PortraitFitHeight": 0.5
+      }
+    }
+  },
+  "classes": [
+    {
+      "name": "Root",
+      "type": "Container",
+      "label": "Root",
+      "children": [
+        {
+          "name": "BackgroundSprite",
+          "type": "Sprite",
+          "label": "Background-NormalSpin-Portrait",
+          "requiresLoading": true,
+          "texture": "background-Portrait.jpg",
+          "visibilityState": {
+            "FreeSpin": false,
+            "NormalSpin": true
+          },
+          "position": {
+            "Portrait": {
+              "Sword": {
+                "divisor": 1080,
+                "x": 1,
+                "y": 1,
+                "visible": true
+              },
+              "Square": {
+                "divisor": 1920,
+                "x": 1,
+                "y": -5,
+                "visible": true
+              }
+            },
+            "Landscape": {
+              "Train": {
+                "divisor": 1080,
+                "x": 1,
+                "y": 1,
+                "visible": false
+              },
+              "Rectangle": {
+                "divisor": 1080,
+                "x": 1,
+                "y": 1,
+                "visible": false
+              }
+            }
+          }
+        },
+        {
+          "name": "BackgroundSprite",
+          "type": "Sprite",
+          "label": "Background-NormalSpin-LandScape",
+          "requiresLoading": true,
+          "texture": "background-Landscape.jpg",
+          "visibilityState": {
+            "FreeSpin": false,
+            "NormalSpin": true
+          },
+          "position": {
+            "Portrait": {
+              "Sword": {
+                "divisor": 1080,
+                "x": 1,
+                "y": 1,
+                "visible": false
+              },
+              "Square": {
+                "divisor": 1920,
+                "x": 1,
+                "y": -5,
+                "visible": false
+              }
+            },
+            "Landscape": {
+              "Train": {
+                "divisor": 1080,
+                "x": 1,
+                "y": 1,
+                "visible": true
+              },
+              "Rectangle": {
+                "divisor": 1920,
+                "x": -10,
+                "y": 1,
+                "visible": true
+              }
+            }
+          }
+        },
+        {
+          "name": "TetraSprite",
+          "label": "Chocolate"
+        }
+      ]
+    }
+  ]
+}

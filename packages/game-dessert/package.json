@@ -1,0 +1,27 @@
+{
+  "name": "game-dessert",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "mockserver": "node mock-server/websocket-server.js",
+    "clean:files": "rimraf --glob ./raw-assets/*",
+    "clean:preload": "rimraf --glob \"./assets/images/common/preload{m}\"",
+    "clean:assetCache": "cross-env-shell \"rimraf .assetpack\"",
+    "build:assets": "assetpack",
+    "dev:server": "vite",
+    "compress": "pnpm run clean:assetCache && pnpm run clean:files && pnpm run clean:preload && node compress-images.js ./ zh",
+    "dev": "pnpm run compress && pnpm run build:assets && pnpm run dev:server",
+    "build": "pnpm run compress && pnpm run build:assets && vite build --mode development --base=./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@assetpack/core": "^1.4.0",
+    "eventemitter3": "^5.0.1",
+    "gsap": "^3.12.7",
+    "pixi.js": "^8.8.1",
+    "xstate": "^5.19.2"
+  }
+}
