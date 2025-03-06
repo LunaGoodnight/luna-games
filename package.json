@@ -9,17 +9,17 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "typescript": "~5.7.2",
-    "vite": "^6.2.0",
     "imagemin": "^9.0.0",
     "imagemin-mozjpeg": "^10.0.0",
     "imagemin-pngquant": "^10.0.0",
     "prettier": "^3.5.3",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
   },
   "dependencies": {
     "@assetpack/core": "^1.4.0",
+    "@pixi/devtools": "^2.0.1",
     "pixi.js": "^8.8.1"
-
   }
 }
