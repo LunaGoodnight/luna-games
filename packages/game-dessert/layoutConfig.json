@@ -68,7 +68,44 @@
               }
             }
           }
+        },
+        {
+          "name": "TetraSprite",
+          "type": "Sprite",
+          "label": "Map",
+          "texture": "map.jpg",
+          "position": {
+            "Portrait": {
+              "Sword": {
+                "visible": true,
+                "divisor": 1000,
+                "x": 1,
+                "y": 1
+              },
+              "Square": {
+                "visible": true,
+                "divisor": 1700,
+                "x": 1,
+                "y": 1
+              }
+            },
+            "Landscape": {
+              "Train": {
+                "visible": true,
+                "divisor": 1200,
+                "x": 1,
+                "y": 1
+              },
+              "Rectangle": {
+                "visible": true,
+                "divisor": 1800,
+                "x": 1,
+                "y": -1
+              }
+            }
+          }
         }
+
       ]
     }
   ]
