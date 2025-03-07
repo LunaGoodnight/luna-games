@@ -10,13 +10,13 @@ export class Mockup extends Sprite {
 	layoutConfig;
 	app;
 	commonData;
-	slotMachineActor;
+	machineActor;
 	imageScale = 1;
 	isVisible = false;
 	isFreeSpin: boolean = false;
 
 	constructor({
-		slotMachineActor,
+		machineActor,
 		app,
 		commonData,
 		layoutConfig,
@@ -26,7 +26,7 @@ export class Mockup extends Sprite {
 		this.layoutConfig = layoutConfig;
 		this.app = app;
 		this.commonData = commonData;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 
 		if (layoutConfig?.zIndex) this.zIndex = layoutConfig.zIndex;
 
@@ -35,7 +35,7 @@ export class Mockup extends Sprite {
 
 		const resizeManager = ResizeManager.getInstance();
 		resizeManager.subscribe(this.updatePosition.bind(this));
-		slotMachineActor.subscribe((snapshot) => {
+		machineActor.subscribe((snapshot) => {
 			this.isFreeSpin = snapshot.context.isFreeSpin;
 
 			this.isVisible = snapshot.context.isFreeSpin

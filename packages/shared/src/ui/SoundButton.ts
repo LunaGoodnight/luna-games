@@ -15,11 +15,11 @@ export class SoundButton extends Button {
 	isFreeSpin = false;
 	constructor({
 		layoutConfig,
-		slotMachineActor,
+		machineActor,
 		app,
 		commonData,
 	}: IElementProps) {
-		super({ layoutConfig, slotMachineActor, app, commonData });
+		super({ layoutConfig, machineActor, app, commonData });
 		const urlParams = new URLSearchParams(window.location.search);
 
 		if (
@@ -28,7 +28,7 @@ export class SoundButton extends Button {
 				'isSoundOn'
 			) === 'false'
 		) {
-			slotMachineActor.send({
+			machineActor.send({
 				type: EnumSlotMachineEvents.TURN_SOUND_OFF,
 			});
 		}
@@ -38,21 +38,21 @@ export class SoundButton extends Button {
 				'isSoundOn'
 			) === 'true'
 		) {
-			slotMachineActor.send({
+			machineActor.send({
 				type: EnumSlotMachineEvents.TURN_SOUND_ON,
 			});
 		}
 		this.eventMode = 'static';
 		this.cursor = 'pointer';
 		this.on('pointerdown', () => {
-			slotMachineActor.send({
+			machineActor.send({
 				type: EnumSlotMachineEvents.TOGGLE_SOUND,
 			});
 			sfx.trigger(CacheLeakSFXEventKeys.clickWidgetButton);
 		});
 
 		this.subscribeToActor();
-		slotMachineActor.subscribe(async (snapshot) => {
+		machineActor.subscribe(async (snapshot) => {
 			const status = getStatus(snapshot.value);
 			switch (status) {
 				case EnumSlotMachineState.IDLE:
@@ -93,7 +93,7 @@ export class SoundButton extends Button {
 	}
 
 	async subscribeToActor() {
-		this.slotMachineActor.subscribe(async (snapshot) => {
+		this.machineActor.subscribe(async (snapshot) => {
 			if (snapshot?.context.soundOn) {
 				await Assets.loadBundle(['sounds']);
 

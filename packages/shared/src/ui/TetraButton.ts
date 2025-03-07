@@ -9,11 +9,11 @@ export class TetraButton extends Sprite {
 	layoutConfig;
 	app;
 	commonData;
-	slotMachineActor;
+	machineActor;
 	imageScale = 1;
 
 	constructor({
-		slotMachineActor,
+		machineActor,
 		app,
 		commonData,
 		layoutConfig,
@@ -23,7 +23,7 @@ export class TetraButton extends Sprite {
 		this.layoutConfig = layoutConfig;
 		this.app = app;
 		this.commonData = commonData;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 
 		if (layoutConfig?.zIndex) this.zIndex = layoutConfig.zIndex;
 		// if (layoutConfig?.defaultVisible) {
@@ -76,13 +76,13 @@ export class TetraButton extends Sprite {
 	sendLoadedEvent() {
 		const {
 			context: { elementLoadStatus },
-		} = this.slotMachineActor.getSnapshot();
+		} = this.machineActor.getSnapshot();
 
 		const newValue = {
 			isLoaded: true,
 			label: this.layoutConfig.label,
 		};
-		this.slotMachineActor.send({
+		this.machineActor.send({
 			type: EnumSlotMachineEvents.UPDATE_ELEMENT_STATUS,
 			elementLoadStatus: {
 				...elementLoadStatus,

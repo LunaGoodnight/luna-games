@@ -9,13 +9,13 @@ export class BackgroundSprite extends Sprite {
 	layoutConfig;
 	app;
 	commonData;
-	slotMachineActor;
+	machineActor;
 	imageScale = 1;
 	isVisible = false;
 	isFreeSpin: boolean = false;
 
 	constructor({
-		slotMachineActor,
+		machineActor,
 		app,
 		commonData,
 		layoutConfig,
@@ -25,13 +25,13 @@ export class BackgroundSprite extends Sprite {
 		this.layoutConfig = layoutConfig;
 		this.app = app;
 		this.commonData = commonData;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 
 		this.init();
 		const resizeManager = ResizeManager.getInstance();
 		resizeManager.subscribe(this.updatePosition.bind(this));
 
-		slotMachineActor.subscribe((snapshot) => {
+		machineActor.subscribe((snapshot) => {
 			this.isFreeSpin = snapshot.context.isFreeSpin;
 			this.isVisible = snapshot.context.isFreeSpin
 				? this.layoutConfig.visibilityState[EnumGameStatus.FreeSpin]
@@ -71,13 +71,13 @@ export class BackgroundSprite extends Sprite {
 	sendLoadedEvent() {
 		const {
 			context: { elementLoadStatus },
-		} = this.slotMachineActor.getSnapshot();
+		} = this.machineActor.getSnapshot();
 
 		const newValue = {
 			isLoaded: true,
 			label: this.layoutConfig.label,
 		};
-		this.slotMachineActor.send({
+		this.machineActor.send({
 			type: EnumSlotMachineEvents.UPDATE_ELEMENT_STATUS,
 			elementLoadStatus: {
 				...elementLoadStatus,

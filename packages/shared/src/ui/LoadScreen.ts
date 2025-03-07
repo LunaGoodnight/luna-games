@@ -39,7 +39,7 @@ export class LoadScreen extends Container {
 	imageScale = 1;
 	clickTip: Text | null = null;
 	progressRatio: number = 0;
-	slotMachineActor;
+	machineActor;
 	blackBackground = new Graphics();
 	backgroundHitArea: Container | null = null;
 	hasClicked = false;
@@ -51,17 +51,17 @@ export class LoadScreen extends Container {
 		commonData,
 		app,
 		loadScreenPosition,
-		slotMachineActor,
+		machineActor,
 	}: {
 		commonData: ICommonContent;
 		app: Application;
 		loadScreenPosition: ILoadScreenPosition;
-		slotMachineActor: AnyActorRef;
+		machineActor: AnyActorRef;
 	}) {
 		super();
 		this.commonData = commonData;
 		this.app = app;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 		this.loadScreenPosition = loadScreenPosition;
 		this.loadBarWidth = app.screen.width / 15;
 
@@ -350,12 +350,12 @@ export class LoadScreen extends Container {
 	}
 
 	private handleClick() {
-		const snapshot = this.slotMachineActor.getSnapshot();
+		const snapshot = this.machineActor.getSnapshot();
 
 		if (
 			snapshot.value === EnumSlotMachineState.READY_TO_ENTER_NORMAL_SPIN
 		) {
-			this.slotMachineActor.send({
+			this.machineActor.send({
 				type: EnumSlotMachineEvents.INIT_TO_NORMAL_SPIN_IDLE,
 			});
 			this.hasClicked = true;
@@ -365,7 +365,7 @@ export class LoadScreen extends Container {
 		}
 
 		if (snapshot.value === EnumSlotMachineState.READY_TO_ENTER_FREE_SPIN) {
-			this.slotMachineActor.send({
+			this.machineActor.send({
 				type: EnumSlotMachineEvents.INIT_TO_FREE_SPIN_IDLE,
 			});
 			this.hasClicked = true;

@@ -10,7 +10,7 @@ export class TetraLayoutContainer extends Container {
 	layoutConfig;
 	app;
 	commonData;
-	slotMachineActor;
+	machineActor;
 
 	isFreeSpin = false;
 	isWaiting = true;
@@ -19,14 +19,14 @@ export class TetraLayoutContainer extends Container {
 		layoutConfig,
 		app,
 		commonData,
-		slotMachineActor,
+		machineActor,
 	}: IElementProps) {
 		super();
 
 		this.layoutConfig = layoutConfig;
 		this.app = app;
 		this.commonData = commonData;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 		this.updatePosition();
 
 		if (layoutConfig?.scale) {
@@ -47,7 +47,7 @@ export class TetraLayoutContainer extends Container {
 		if (this.layoutConfig?.shouldWaitForParentWidthOrHeight) {
 			this.visible = false;
 		}
-		slotMachineActor.subscribe((snapshot) => {
+		machineActor.subscribe((snapshot) => {
 			const status = getStatus(snapshot.value);
 			this.isFreeSpin = snapshot.context.isFreeSpin;
 			switch (status) {

@@ -6,12 +6,12 @@ export class StyleLabel extends Container {
 	app;
 	commonData;
 	layoutConfig;
-	slotMachineActor;
+	machineActor;
 	styleText;
 
 	constructor({
 		app,
-		slotMachineActor,
+		machineActor,
 		layoutConfig,
 		commonData,
 	}: IElementProps) {
@@ -20,7 +20,7 @@ export class StyleLabel extends Container {
 		this.app = app;
 		this.commonData = commonData;
 		this.layoutConfig = layoutConfig;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 		this.visible = layoutConfig.visible;
 		const style = new TextStyle({
 			fontFamily: 'Arial',

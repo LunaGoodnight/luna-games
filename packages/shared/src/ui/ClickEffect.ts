@@ -5,13 +5,13 @@ import { globalEE } from '../utils/eventEmitter.ts';
 
 export class ClickEffect extends TetraButton {
 	constructor({
-		slotMachineActor,
+		machineActor,
 		app,
 		commonData,
 		layoutConfig,
 	}: IElementProps) {
 		super({
-			slotMachineActor,
+			machineActor,
 			app,
 			commonData,
 			layoutConfig,

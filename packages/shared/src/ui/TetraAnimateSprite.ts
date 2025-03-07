@@ -9,11 +9,11 @@ export class TetraAnimateSprite extends Sprite {
 	layoutConfig;
 	app;
 	commonData;
-	slotMachineActor;
+	machineActor;
 	imageScale = 1;
 
 	constructor({
-		slotMachineActor,
+		machineActor,
 		app,
 		commonData,
 		layoutConfig,
@@ -23,7 +23,7 @@ export class TetraAnimateSprite extends Sprite {
 		this.layoutConfig = layoutConfig;
 		this.app = app;
 		this.commonData = commonData;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 
 		if (layoutConfig?.zIndex) this.zIndex = layoutConfig.zIndex;
 

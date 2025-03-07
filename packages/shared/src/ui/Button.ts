@@ -13,7 +13,7 @@ export class Button extends Sprite {
 	layoutConfig;
 	app;
 	commonData;
-	slotMachineActor;
+	machineActor;
 	isFreeSpin = false;
 	hasBeenInitialized = false;
 
@@ -21,20 +21,20 @@ export class Button extends Sprite {
 		layoutConfig,
 		app,
 		commonData,
-		slotMachineActor,
+		machineActor,
 	}: IElementProps) {
 		super();
 
 		this.layoutConfig = layoutConfig;
 		this.app = app;
 		this.commonData = commonData;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 		this.init();
 
 		if (layoutConfig?.label) {
 			this.label = layoutConfig.label;
 		}
-		slotMachineActor.subscribe((snapshot) => {
+		machineActor.subscribe((snapshot) => {
 			const status = getStatus(snapshot.value);
 			this.isFreeSpin = Boolean(snapshot.context.isFreeSpin);
 
@@ -110,13 +110,13 @@ export class Button extends Sprite {
 	sendLoadedEvent() {
 		const {
 			context: { elementLoadStatus },
-		} = this.slotMachineActor.getSnapshot();
+		} = this.machineActor.getSnapshot();
 
 		const newValue = {
 			isLoaded: true,
 			label: this.layoutConfig.label,
 		};
-		this.slotMachineActor.send({
+		this.machineActor.send({
 			type: EnumSlotMachineEvents.UPDATE_ELEMENT_STATUS,
 			elementLoadStatus: {
 				...elementLoadStatus,

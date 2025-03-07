@@ -19,21 +19,21 @@ export class SpineAnimation extends Container {
 	private imageScale = 1;
 	private isDestroyed = false;
 
-	slotMachineActor;
+	machineActor;
 	isFreeSpin: boolean = false;
 
 	constructor({
 		app,
 		layoutConfig,
 		commonData,
-		slotMachineActor,
+		machineActor,
 	}: IElementProps) {
 		super();
 
 		this.app = app;
 		this.commonData = commonData;
 		this.layoutConfig = layoutConfig;
-		this.slotMachineActor = slotMachineActor;
+		this.machineActor = machineActor;
 		this.label = layoutConfig.label;
 		if (layoutConfig?.zIndex) {
 			this.zIndex = layoutConfig.zIndex;
@@ -42,7 +42,7 @@ export class SpineAnimation extends Container {
 		this.visible = false;
 		this.init();
 
-		slotMachineActor.subscribe((snapshot) => {
+		machineActor.subscribe((snapshot) => {
 			this.isFreeSpin = snapshot.context.isFreeSpin;
 			this.visible = this.isFreeSpin
 				? this.layoutConfig.visibilityState[EnumGameStatus.FreeSpin]
@@ -82,13 +82,13 @@ export class SpineAnimation extends Container {
 	sendLoadedEvent() {
 		const {
 			context: { elementLoadStatus },
-		} = this.slotMachineActor.getSnapshot();
+		} = this.machineActor.getSnapshot();
 
 		const newValue = {
 			isLoaded: true,
 			label: this.layoutConfig.label,
 		};
-		this.slotMachineActor.send({
+		this.machineActor.send({
 			type: EnumSlotMachineEvents.UPDATE_ELEMENT_STATUS,
 			elementLoadStatus: {
 				...elementLoadStatus,
