@@ -29,7 +29,7 @@ export class Game {
 			autoStart: true,
 			resolution: devicePixelRatio || 1,
 			autoDensity: true,
-
+			antialias: false
 			// premultipliedAlpha: true,
 		});
 		this.initDevtools();
