@@ -1,17 +1,20 @@
-import {Application, Assets, AssetsBundle} from 'pixi.js';
+import { Application, Assets, AssetsBundle } from 'pixi.js';
 import { ResizeManager } from '../ui/ResizeManager.ts';
+import { LayoutManager } from './LayoutManager';
 
 export class Game {
 	app: Application;
-	layoutConfig
-	machineActor
+	layoutConfig;
+	machineActor;
+	layoutManager;
 
-	constructor({ layoutConfig,machineActor }) {
+	constructor({ layoutConfig, machineActor }) {
 		this.app = new Application();
 		this.layoutConfig = layoutConfig;
 
 		this.machineActor = machineActor;
 	}
+
 	async initDevtools() {
 		if (import.meta.env.VITE_USE_DEVTOOL === 'true') {
 			const { initDevtools } = await import('@pixi/devtools');
@@ -19,7 +22,7 @@ export class Game {
 		}
 	}
 
-	async init({ manifest}){
+	async init({ manifest }) {
 		await this.app.init({
 			resizeTo: window,
 			useBackBuffer: true,
@@ -41,9 +44,7 @@ export class Game {
 			preferWorkers: workersSupported,
 		});
 
-		Assets.loadBundle(['preload', ], (progress) => {
-
-		}).then(() => {
+		Assets.loadBundle(['preload'], (progress) => {}).then(() => {
 			this.startGame();
 		});
 
@@ -59,9 +60,18 @@ export class Game {
 	}
 
 	startGame() {
+		this.layoutManager = new LayoutManager({
+			layoutConfig: this.layoutConfig,
+			app: this.app,
+			machineActor: this.machineActor,
+		});
 
+		this.app.stage.addChild(this.layoutManager);
 
+		this.machineActor?.start();
+		this.resize();
 	}
+
 	resize(): void {
 		const windowWidth = window.innerWidth;
 		const windowHeight = window.innerHeight;

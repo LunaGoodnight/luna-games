@@ -25,7 +25,7 @@ type ClassConstructor =
 	| typeof TetraLayoutContainer;
 
 export interface IElementProps {
-	slotMachineActor: AnyActorRef;
+	machineActor: AnyActorRef;
 	app: Application<Renderer>;
 	layoutConfig: any;
 	commonData?: any;
@@ -45,13 +45,13 @@ class DefaultElementFactory implements ElementFactory {
 
 const factoryMap: Record<string, ElementFactory> = {
 	Root: new DefaultElementFactory(Root),
-	Background: new DefaultElementFactory(Background),
+
 };
 
 interface IProps {
 	layoutConfig: any;
 	app: Application<Renderer>;
-	slotMachineActor: AnyActorRef;
+	machineActor: AnyActorRef;
 }
 
 interface ElementInfo {
@@ -65,27 +65,26 @@ export class LayoutManager extends Container {
 	private layoutConfig: any;
 	private app: Application<Renderer>;
 	private elementRegistry: { [key: string]: ElementInfo } = {};
-	private freeSpinSourceRegistry: { [key: string]: boolean } = {};
-	private normalSpinSourceRegistry: { [key: string]: boolean } = {};
-	slotMachineActor: AnyActorRef | null = null;
 
-	constructor({ layoutConfig, app, slotMachineActor }: IProps) {
+	machineActor: AnyActorRef | null = null;
+
+	constructor({ layoutConfig, app, machineActor }: IProps) {
 		super();
 		this.layoutConfig = layoutConfig;
 		this.app = app;
 
 		this.updateLayout({
 			app,
-			slotMachineActor,
+			machineActor,
 		});
 	}
 
 	updateLayout({
 		app,
-		slotMachineActor,
+					 machineActor,
 	}: {
 		app: Application<Renderer>;
-		slotMachineActor: AnyActorRef;
+		machineActor: AnyActorRef;
 	}): void {
 		this.elementRegistry = {};
 
@@ -96,7 +95,7 @@ export class LayoutManager extends Container {
 			const rootElement = this.createElement(
 				layoutData,
 				app,
-				slotMachineActor,
+				machineActor,
 				commonData
 			);
 			this.addChild(rootElement);
@@ -106,7 +105,7 @@ export class LayoutManager extends Container {
 	createElement(
 		elementData: any,
 		app: Application<Renderer>,
-		slotMachineActor: AnyActorRef,
+		machineActor: AnyActorRef,
 		commonData: any
 	): Container | Sprite {
 		const factory = factoryMap[elementData.name];
@@ -116,38 +115,24 @@ export class LayoutManager extends Container {
 		const props = {
 			layoutConfig: elementData,
 			app,
-			slotMachineActor,
+			machineActor,
 			commonData: commonData,
 		};
 
 		const element = factory.create(props);
 
-		const elementInfo: ElementInfo = {
-			label: elementData.label || 'unnamed',
-			isLoaded: elementData.requiresLoading ? false : true,
-		};
-		if (elementData?.freeSpinLoadSource)
-			this.freeSpinSourceRegistry[elementData.label] = false;
-
-		if (elementData?.normalSpinLoadSource)
-			this.normalSpinSourceRegistry[elementData.label] = false;
-
-		this.elementRegistry[elementInfo.label] = elementInfo;
 
 		if (Array.isArray(elementData.children)) {
 			elementData.children.map((childData: any) => {
 				const childElement = this.createElement(
 					childData,
 					app,
-					slotMachineActor,
+					machineActor,
 					commonData
 				);
 				element.addChild(childElement);
 
-				this.elementRegistry[childData.label] = {
-					label: childData.label || 'unnamed',
-					isLoaded: !childData?.requiresLoading,
-				};
+
 
 				globalEE.emit(`${childData.label}_added`);
 			});

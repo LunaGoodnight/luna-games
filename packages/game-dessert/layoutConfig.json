@@ -117,7 +117,39 @@
         },
         {
           "name": "TetraSprite",
-          "label": "Chocolate"
+          "type": "Sprite",
+          "label": "Paper",
+          "texture": "golden.jpg",
+          "position": {
+            "Portrait": {
+              "Sword": {
+                "visible": false,
+                "divisor": 1000,
+                "x": 1,
+                "y": -330
+              },
+              "Square": {
+                "visible": false,
+                "divisor": 1700,
+                "x": 1,
+                "y": -330
+              }
+            },
+            "Landscape": {
+              "Train": {
+                "visible": false,
+                "divisor": 1200,
+                "x": 1,
+                "y": -250
+              },
+              "Rectangle": {
+                "visible": true,
+                "divisor": 1800,
+                "x": -500,
+                "y": -658
+              }
+            }
+          }
         }
       ]
     }
