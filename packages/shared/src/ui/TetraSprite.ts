@@ -25,10 +25,12 @@ export class TetraSprite extends Sprite {
 		this.commonData = commonData;
 		this.machineActor = machineActor;
 
+		this.visible = false;
 		if (layoutConfig?.zIndex) this.zIndex = layoutConfig.zIndex;
 		if ('visible' in layoutConfig) {
 			this.visible = layoutConfig.visible;
 		}
+
 		// this.alpha = layoutConfig.alpha;
 		this.init();
 
