@@ -34,88 +34,6 @@
       "label": "Root",
       "children": [
         {
-          "name": "BackgroundSprite",
-          "type": "Sprite",
-          "label": "Background-NormalSpin-Portrait",
-          "requiresLoading": true,
-          "texture": "background-Portrait.jpg",
-          "visibilityState": {
-            "FreeSpin": false,
-            "NormalSpin": true
-          },
-          "position": {
-            "Portrait": {
-              "Sword": {
-                "divisor": 1080,
-                "x": 1,
-                "y": 1,
-                "visible": true
-              },
-              "Square": {
-                "divisor": 1920,
-                "x": 1,
-                "y": -5,
-                "visible": true
-              }
-            },
-            "Landscape": {
-              "Train": {
-                "divisor": 1080,
-                "x": 1,
-                "y": 1,
-                "visible": false
-              },
-              "Rectangle": {
-                "divisor": 1080,
-                "x": 1,
-                "y": 1,
-                "visible": false
-              }
-            }
-          }
-        },
-        {
-          "name": "BackgroundSprite",
-          "type": "Sprite",
-          "label": "Background-NormalSpin-LandScape",
-          "requiresLoading": true,
-          "texture": "background-Landscape.jpg",
-          "visibilityState": {
-            "FreeSpin": false,
-            "NormalSpin": true
-          },
-          "position": {
-            "Portrait": {
-              "Sword": {
-                "divisor": 1080,
-                "x": 1,
-                "y": 1,
-                "visible": false
-              },
-              "Square": {
-                "divisor": 1920,
-                "x": 1,
-                "y": -5,
-                "visible": false
-              }
-            },
-            "Landscape": {
-              "Train": {
-                "divisor": 1080,
-                "x": 1,
-                "y": 1,
-                "visible": true
-              },
-              "Rectangle": {
-                "divisor": 1920,
-                "x": -10,
-                "y": 1,
-                "visible": true
-              }
-            }
-          }
-        },
-        {
           "name": "TetraSprite",
           "type": "Sprite",
           "label": "Paper",
@@ -123,30 +41,30 @@
           "position": {
             "Portrait": {
               "Sword": {
-                "visible": false,
+                "visible": true,
                 "divisor": 1000,
                 "x": 1,
-                "y": -330
+                "y": 1
               },
               "Square": {
-                "visible": false,
+                "visible": true,
                 "divisor": 1700,
                 "x": 1,
-                "y": -330
+                "y": 1
               }
             },
             "Landscape": {
               "Train": {
-                "visible": false,
+                "visible": true,
                 "divisor": 1200,
                 "x": 1,
-                "y": -250
+                "y": 1
               },
               "Rectangle": {
                 "visible": true,
                 "divisor": 1800,
-                "x": -500,
-                "y": -658
+                "x": 1,
+                "y": -1
               }
             }
           }

@@ -29,7 +29,7 @@ export class TetraSprite extends Sprite {
 		if ('visible' in layoutConfig) {
 			this.visible = layoutConfig.visible;
 		}
-		this.alpha = layoutConfig.alpha;
+		// this.alpha = layoutConfig.alpha;
 		this.init();
 
 		const resizeManager = ResizeManager.getInstance();

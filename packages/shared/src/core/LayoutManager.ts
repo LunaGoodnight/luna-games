@@ -45,6 +45,7 @@ class DefaultElementFactory implements ElementFactory {
 
 const factoryMap: Record<string, ElementFactory> = {
 	Root: new DefaultElementFactory(Root),
+	TetraSprite: new DefaultElementFactory(TetraSprite),
 
 };
 
