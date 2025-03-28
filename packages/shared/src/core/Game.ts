@@ -30,7 +30,7 @@ export class Game {
 			resolution: devicePixelRatio || 1,
 			autoDensity: true,
 			antialias: false
-			// premultipliedAlpha: true,
+
 		});
 		this.initDevtools();
 		this.app.ticker.maxFPS = 60;
